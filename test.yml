@@ -1,0 +1,6 @@
+---
+- name: test
+  hosts: all
+  tasks:
+    - name: t1
+      shell: echo h
