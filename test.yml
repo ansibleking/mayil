@@ -1,7 +1,7 @@
 ---
 - name: test
   hosts: servers
-  become: devops
+  become_user: devops
   tasks:
     - name: t1
       ansible.builtin.debug:
