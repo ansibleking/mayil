@@ -1,6 +1,7 @@
 ---
 - name: test
-  hosts: all
+  hosts: servers
   tasks:
     - name: t1
-      shell: echo h
+      ansible.builtin.debug:
+        msg: "{{ ansible_facts['fqdn'] }}"
