@@ -1,2 +1,5 @@
 [mayil]
 192.168.50.191
+
+[servers]
+servera.lab.example.com
