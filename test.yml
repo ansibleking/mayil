@@ -1,6 +1,7 @@
 ---
 - name: test
   hosts: servers
+  become: devops
   tasks:
     - name: t1
       ansible.builtin.debug:
