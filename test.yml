@@ -1,8 +1,7 @@
 ---
 - name: test
-  hosts: servers
-  become_user: devops
-  remote_user: devops
+  hosts: localhost
+  gather_facts: false
   tasks:
     - name: t1
       ansible.builtin.debug:
