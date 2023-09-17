@@ -1,1 +1,32 @@
-test
+- name: test
+  hosts: infra
+  tasks:
+    - name: t1
+      ansible.windows.win_ping:
+    - name: t2
+      ansible.windows.win_whoami:
+      register: mayil
+    - name: t3
+      ansible.builtin.debug:
+        msg: "{{ mayil }}"
+          #    - name: Reboot the machine with all defaults
+          #      ansible.windows.win_reboot:
+    - name: Touch a file (creates if not present, updates modification time if present)
+      ansible.windows.win_file:
+       path: C:\Users\opc\oci.txt
+       state: touch
+
+    - name: create directory
+      ansible.windows.win_file:
+       path: c:\users\oci
+       state: directory
+
+    - name: Run basic PowerShell script
+      ansible.windows.win_powershell:
+       script: |
+         Get-CimInstance -Class Win32_NetworkAdapterConfiguration -Filter IPEnabled=$true | Select-Object -ExpandProperty IPAddress
+      register: mm
+
+    - name: print
+      ansible.builtin.debug:
+        msg: "{{ mm.output[0] }}"
